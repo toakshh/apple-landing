@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 const ANIMATION_DURATION = 1;
-const OFFSET_DISTANCE = 5;
+const OFFSET_DISTANCE = 3;
 
 const fadeMeshes = (group,opacity) => {
     if (!group) return;
@@ -20,7 +20,7 @@ const fadeMeshes = (group,opacity) => {
 
 const moveGroup = (group,x) => {
     if (!group) return;
-            gsap.to(group.position,{x , duration:ANIMATION_DURATION});
+    gsap.to(group.position,{x , duration:ANIMATION_DURATION});
 }
 
 const ModelSwitcher = ({scale,isMobile}) => {
