@@ -16,7 +16,7 @@ const ProductViewer = () => {
     <section id='product-viewer'>
         <h2>Take a closer look.</h2>
 
-        <div className='controls'>
+        <div className='controls text-center'>
             <p className='info'>MacbookPro</p>
 
             <div className='flex-center gap-5 mt-5'>

@@ -8,13 +8,18 @@ export default function MacbookModel16(props) {
   const { color } =  useMacbookStore()
   const { nodes, materials, scene } = useGLTF('/models/macbook-16-transformed.glb')
 
-    useEffect(()=>{
-    scene.traverse((child)=>{
-      if(child.isMesh){
-        if(!noChangeParts.includes(child.name)) child.material.color = new Color(color)
-      }
-    })
-  },[color, scene])
+   useEffect(() => {
+  const newColor = new Color(color);
+
+  scene.traverse((child) => {
+    if (child.isMesh && !noChangeParts.includes(child.name)) {
+      const materials = Array.isArray(child.material) ? child.material : [child.material];
+      materials.forEach((mat) => {
+        if (mat?.color) mat.color.copy(newColor);
+      });
+    }
+  });
+}, [color]);
 
   const texture = useTexture('/screen.png')
   // texture.colorSpace = SRGBColorSpace;
@@ -39,7 +44,7 @@ export default function MacbookModel16(props) {
       <mesh geometry={nodes.Object_82.geometry} material={materials.gMtYExgrEUqPfln} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]} >
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]} >
         <meshBasicMaterial map={texture} />
       </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />

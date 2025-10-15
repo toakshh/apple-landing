@@ -3,6 +3,18 @@ import { useGLTF } from '@react-three/drei'
 
 export default function MacbookModel(props) {
   const { nodes, materials } = useGLTF('/models/macbook-transformed.glb')
+//   useEffect(() => {
+//   const newColor = new Color(color);
+
+//   scene.traverse((child) => {
+//     if (child.isMesh && !noChangeParts.includes(child.name)) {
+//       const materials = Array.isArray(child.material) ? child.material : [child.material];
+//       materials.forEach((mat) => {
+//         if (mat?.color) mat.color.copy(newColor);
+//       });
+//     }
+//   });
+// }, [color]);
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Object_10.geometry} material={materials.PaletteMaterial001} rotation={[Math.PI / 2, 0, 0]} />
