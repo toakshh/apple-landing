@@ -312,7 +312,7 @@ img {
     }
 
     .masonry {
-      @apply grid grid-cols-1 lg:grid-cols-2 gap-5 mt-20 text-[#F5F5F7];
+      @apply grid grid-cols-1 lg:grid-cols-2 gap-5 mt-20 md:max-w-4xl max-w-full text-[#F5F5F7] mx-auto;
 
       .left-column {
         @apply flex flex-col justify-between gap-5 opacity-0 -translate-y-5;
